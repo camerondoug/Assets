@@ -3,7 +3,7 @@ Assets .Net Core App
 
 **Description:**
 
-This is a app created for a school project and is intended to be used by a fictious computer company to track assets.
+This is a app created for a school project and is intended to be used by a fictitious computer company to track assets.
 
 **Details:**
 
