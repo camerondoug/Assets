@@ -1,0 +1,39 @@
+﻿@*/*
+    * CPRG 214 Assignment 2
+    * Purpose: This is the code for main index for assets types view
+    * Author: Doug Cameron and Ini Akpan
+    * Date: Aug, 2020
+    */*@
+
+
+@model IEnumerable<CPRG214.Assets.Tracking.Models.AssetTypeViewModel>
+
+@{
+    ViewData["Title"] = "Asset Type List";
+}
+
+<h4>List of Asset Types</h4>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

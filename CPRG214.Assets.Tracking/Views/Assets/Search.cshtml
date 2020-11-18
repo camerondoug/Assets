@@ -1,0 +1,46 @@
+﻿@*/*
+    * CPRG 214 Assignment 2
+    * Purpose: This is the code for search assets view
+    * Author: Doug Cameron and Ini Akpan
+    * Date: Aug, 2020
+    */*@
+
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h4>Search by Asset Type</h4>
+<h5>Select Asset Type from Dropdown</h5>
+<br />
+<select id="uxAssetTypes" asp-items="ViewBag.AssetTypes"></select> @* drop down list*@
+<br />
+<div id="uxDisplay">
+    @await Component.InvokeAsync("AssetsByType", 0)@*  display the partial view in this div*@
+</div>
+
+
+@*This is the jquery code*@
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#uxAssetTypes").change(function () { @* when the asset type drop down changes *@
+                var assetTypeID = $("#uxAssetTypes").val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: '/Assets/GetAssetsByType',  @*call to the asset controller which will
+                                                      then get the partial asset view component   *@
+                    data: { id: assetTypeID }  @* id of asset type from dropdown list*@
+
+                }).done(function (result, statusText, xhdr) {
+                    $("#uxDisplay").html(result);
+                });
+            });
+
+        });
+
+    </script>
+}
+
+
